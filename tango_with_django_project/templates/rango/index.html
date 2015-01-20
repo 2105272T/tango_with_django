@@ -2,13 +2,15 @@
 <html>
 
     <head>
-        <title>Rango</title>
+        <title>Ironman</title>
+	{%load staticfiles%}
     </head>
 
     <body>
-        <h1>Rango says...</h1>
-        Hello World! By <strong>{{ name }}</strong><br />
+        <h1>Ironman says...</h1>
+        Stop! <strong>{{ name }}</strong><br />
         <a href="/rango/about/">About</a><br />
+        <img src="{% static "images/ironman.jpg" %}" alt="Picture of Rango" /> <!-- New line -->
     </body>
 
 </html>

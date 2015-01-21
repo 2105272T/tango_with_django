@@ -21,14 +21,26 @@
 		  a {
 			text-align:center;
 		  }
-		  
+
+          ul {
+              text-align: center;
+          }
 		</style>
     </head>
 
     <body>
         <h1>IRONMAN SAYS...</h1>
-        <p>Never Click <strong><a href="/rango/about/">{{ txt_labelOne }}</a></strong><p>
-        <img src="{% static "images/ironman.jpg" %}" alt="Picture of Rango" /> <!-- New line -->
+        <p>Never Click <strong><a href="/rango/about/">HERE</a></strong><br />
+        <img src="{% static "images/ironman.jpg" %}" alt="Picture of Rango" /><p>
+        {% if categories %}
+                <ul>
+                    {% for category in categories %}
+                    <li>{{ category.name }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p><strong>There are no categories present.</strong></p>
+            {% endif %}
     </body>
 
 </html>

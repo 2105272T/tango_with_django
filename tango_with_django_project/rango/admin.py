@@ -3,7 +3,7 @@ from rango.models import Category, Page
 
 #Chapter 6 Exercise
 class PageAdmin(admin.ModelAdmin):
-    list_display = ('title', 'category', 'url')
+    list_display = ('title', 'category', 'url', 'views')
 
 # Add in this class to customized the Admin Interface
 class CategoryAdmin(admin.ModelAdmin):

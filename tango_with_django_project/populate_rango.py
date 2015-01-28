@@ -8,6 +8,17 @@ from rango.models import Category, Page
 
 
 def populate():
+
+    name_cat = add_cat("Hamza Tanveer",16 ,8)
+
+    add_page(cat=name_cat,
+        title="My GitHub",
+        url="https://github.com/hamzamalik0123/tango_with_django", views=12)
+
+    add_page(cat=name_cat,
+        title="My Python Anywhere",
+        url="https://www.pythonanywhere.com/user/hamzamalik0123/consoles/", views=10)
+
     python_cat = add_cat('Python',128,64)
 
     add_page(cat=python_cat,

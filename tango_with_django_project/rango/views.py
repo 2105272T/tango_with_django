@@ -4,6 +4,8 @@ from django.http import HttpResponse
 from rango.models import Category
 from rango.models import Page
 
+from rango.forms import CategoryForm
+
 def index(request):
 
     # Query the database for a list of ALL categories currently stored.
@@ -11,7 +13,6 @@ def index(request):
     # Retrieve the top 5 only - or all if less than 5.
     # Place the list in our context_dict dictionary which will be passed to the template engine.
     category_list = Category.objects.order_by('-likes')[:5]
-
     page_list = Page.objects.order_by('-views')[:5]
 
     context_dict = {'categories': category_list, 'pages': page_list}
@@ -19,7 +20,7 @@ def index(request):
     return render(request, 'rango/index.html', context_dict)
 
 def about(request):
-    context_dict = {'txt_labelTwo': "I have no strings attached !!!"}
+    context_dict = {'about_us': "This tutorial has been put together by Hamza Tanveer, 2105272T!"}
     return render(request, 'rango/about.html', context_dict)
 
 def category(request, category_name_slug):
@@ -50,3 +51,27 @@ def category(request, category_name_slug):
 
     # Go render the response and return it to the client.
     return render(request, 'rango/category.html', context_dict)
+
+def add_category(request):
+    # A HTTP POST?
+    if request.method == 'POST':
+        form = CategoryForm(request.POST)
+
+        # Have we been provided with a valid form?
+        if form.is_valid():
+            # Save the new category to the database.
+            form.save(commit=True)
+
+            # Now call the index() view.
+            # The user will be shown the homepage.
+            return index(request)
+        else:
+            # The supplied form contained errors - just print them to the terminal.
+            print form.errors
+    else:
+        # If the request was not a POST, display the form to enter details.
+        form = CategoryForm()
+
+    # Bad form (or form details), no form supplied...
+    # Render the form with error messages (if any).
+    return render(request, 'rango/add_category.html', {'form': form})

@@ -30,8 +30,7 @@
 
     <body>
         <h1>RANGO SAYS...</h1>
-        <p>Get to know <strong><a href="/rango/about/">About Us</a></strong><br />
-        <!-- <img src="{% static "images/ironman.jpg" %}" alt="Picture of Rango" /><p> -->
+        <p>GET TO KNOW <a href="/rango/about/">ABOUT US</a><br />
 
         <h1> CATEGORIES </h1>
         {% if categories %}
@@ -44,7 +43,6 @@
         {% else %}
             <strong>There are no categories present.</strong>
         {% endif %}
-        <br />
 
         <h1> PAGES </h1>
         {% if pages %}
@@ -58,7 +56,7 @@
         {% endif %}
 
         <br />
-        <p></p>
+    <a href="/rango/add_category/">Add a New Category</a><br />
     </body>
 
 </html>

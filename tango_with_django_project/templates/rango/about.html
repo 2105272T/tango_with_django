@@ -1,34 +1,13 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html' %}
 
-    <head>
-        <title>tango_with_django</title>
-		{%load staticfiles%}
-        <style>
-		  body {
-			background-color:#CCC;
-		  }
-		  h1 {
-			color:#0099FF;
-			background-color:#FFF;
-			border-radius:5px;
-			text-align:center;
-		  }
-		  p {
-			color:#000;
-			text-align:center;
-		  }
-		  a {
-			text-align:center;
-		  }
-		  
-		</style>
-    </head>
+{% load staticfiles %}
 
-    <body>
+{% block title %}{{ category_name }}{% endblock %}
+
+{% block body_block %}
+
         <h1>ABOUT US</h1>
-        <p>{{ about_us }}<strong><a href="/rango/"><br /> HOME </a></strong><p>
-        <img width="300px" height="300px" src="{% static "images/twd.jpg" %}" alt="Picture of Rango" /> <!-- New line -->
-    </body>
+        <p>{{ about_us }}<p>
+        <img width="300px" height="300px" src="{% static "images/twd.jpg" %}" alt="Picture of Rango" />
 
-</html>
+{% endblock %}

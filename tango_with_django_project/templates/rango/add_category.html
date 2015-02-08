@@ -1,37 +1,14 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Rango</title>
+{% extends 'base.html' %}
 
-        <style>
-		  body {
-			background-color:#DCDCDC;
-		  }
-		  h1 {
-            width:500px;
-			color:#0099FF;
-			background-color:#FFF;
-			border-radius:5px;
-			text-align:left;
-            padding:5px;
-            padding-left:10px
-		  }
-		  p {
-			color:#000;
-			text-align:left;
-		  }
-		  a {
-			text-align:left;
-		  }
+{% load staticfiles %}
 
-		</style>
+{% block title %}{{ category_name }}{% endblock %}
 
-    </head>
+{% block body_block %}
 
-    <body>
         <h1>ADD CATEGORY</h1>
 
-        <form id="category_form" method="post" action="/rango/add_category/">
+        <form id="category_form" method="post" action="{% url 'add_category' %}">
 
             {% csrf_token %}
             {% for hidden in form.hidden_fields %}
@@ -45,7 +22,7 @@
             {% endfor %}
 
             <input type="submit" name="submit" value="Create Category" />
-        </form>
-    </body>
 
-</html>
+        </form>
+
+{% endblock %}

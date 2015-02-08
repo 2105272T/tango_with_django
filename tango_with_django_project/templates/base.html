@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        {% load staticfiles %}
+        <title>Rango - {% block title %}How to Tango with Django! {% endblock %}</title>
+        <style>
+            body {
+                background-color:#DCDCDC;
+            }
+            #wrapper{
+                width:800px;
+                background-color:#009688;
+                padding:20px;
+                border-radius:5px;
+                margin-top:0px;
+                margin-left:50px
+            }
+            #logo{
+                margin-top:20px;
+                margin-left:50px;
+            }
+            h1 {
+            	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+                width:780px;
+                color:#F5F5F5;
+                background-color:#00BFA5;
+                border-radius:5px;
+                text-align:left;
+                padding:5px;
+                padding-left:10px;
+            }
+            h2{
+            	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+                color:#F5F5F5;
+                text-align:right;
+            }
+            p {
+            	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+                color:#000;
+                text-align:left;
+            }
+            a{
+            	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	            text-decoration:none;
+	            color:#F5F5F5;
+            }
+            a:hover{
+            	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+                text-decoration:underline;
+                color:#F5F5F5;
+            }
+            a:active{
+            	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+                text-decoration:none;
+                color:#F5F5F5;
+            }
+            a:visited {
+            	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+                text-decoration:none;
+	            color:#F5F5F5;
+            }
+            ul{
+            	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+                list-style-type: square;
+                color:#00BFA5;
+            }
+            #table{
+                width:200px;
+            }
+		</style>
+    </head>
+
+    <body>
+        <div id="logo"><a class="logo_img" href="{% url 'index' %}"><img width="200px" height="60px" src="{% static "images/logo.png" %}" alt="dJango" /></a></div>
+        <div id="wrapper">
+            <div>
+                {% block body_block %}{% endblock %}
+            </div>
+
+            <hr />
+
+            <div id="table">
+                <ul>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'restricted' %}">Restricted Page</a></li>
+                    <li><a href="{% url 'add_category' %}">Add a New Category</a></li>
+                    <br/>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                    {% else %}
+                    <li><a href="{% url 'register' %}">Register Here</a></li>
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    {% endif %}
+                    <li><a href="{% url 'about' %}">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</ht

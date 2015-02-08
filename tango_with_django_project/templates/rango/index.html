@@ -1,50 +1,28 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html' %}
 
-    <head>
-        <title>tango_with_django</title>
-		{%load staticfiles%}
-        <style>
-		  body {
-			background-color:#DCDCDC;
-		  }
-		  h1 {
-            width:500px;
-			color:#0099FF;
-			background-color:#FFF;
-			border-radius:5px;
-			text-align:left;
-            padding:5px;
-            padding-left:10px
-		  }
-		  p {
-			color:#000;
-			text-align:left;
-		  }
-		  a {
-			text-align:left;
-		  }
+{% load staticfiles %}
 
-		</style>
-    </head>
+{% block title %}{{ category_name }}{% endblock %}
 
-    <body>
-        <h1>RANGO SAYS...</h1>
-        <p>GET TO KNOW <a href="/rango/about/">ABOUT US</a><br />
+{% block body_block %}
 
-        <h1> CATEGORIES </h1>
+        {% if user.is_authenticated %}
+        <h2>Hello {{ user.username }}!</h2>
+        {% else %}
+        <h2>Hello world!</h2>
+        {% endif %}
+        <h1> Category </h1>
         {% if categories %}
             <ul>
                 {% for category in categories %}
-                <!-- Following line changed to add an HTML hyperlink -->
-                <li><a href="/rango/category/{{ category.slug }}">{{ category.name }}</a></li>
+                <li><a href="{% url 'category'  category.slug %}">{{ category.name }}</a></li>
                 {% endfor %}
             </ul>
         {% else %}
             <strong>There are no categories present.</strong>
         {% endif %}
 
-        <h1> PAGES </h1>
+        <h1> Pages </h1>
         {% if pages %}
             <ul>
                 {% for page in pages %}
@@ -55,8 +33,4 @@
             <strong>There are no pages present.</strong>
         {% endif %}
 
-        <br />
-    <a href="/rango/add_category/">Add a New Category</a><br />
-    </body>
-
-</html>
+{% endblock %}

@@ -8,7 +8,7 @@
 
         <h1>ADD PAGE</h1>
 
-        <form id="page_form" method="post" action="/rango/category/{{ category.slug }}/add_page/">
+        <form id="page_form" method="post" action="{% url 'add_page'  category.slug %}">
 
             {% csrf_token %}
             {% if category %}

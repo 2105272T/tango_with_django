@@ -1,14 +1,13 @@
 {% extends 'base.html' %}
 
 {% load staticfiles %}
-
-{% block title %}{{ category_name }}{% endblock %}
+{% block title %}Add Category{% endblock %}
 
 {% block body_block %}
 
-        <h1>ADD CATEGORY</h1>
+        <h2 class="form-signin-heading">Add Category</h2>
 
-        <form id="category_form" method="post" action="{% url 'add_category' %}">
+        <form  id="category_form" method="post" action="{% url 'add_category' %}">
 
             {% csrf_token %}
             {% for hidden in form.hidden_fields %}
@@ -21,7 +20,7 @@
                 {{ field }}
             {% endfor %}
 
-            <input type="submit" name="submit" value="Create Category" />
+            <input class="btn btn-primary" type="submit" name="submit" value="Create Category" />
 
         </form>
 

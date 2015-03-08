@@ -5,7 +5,7 @@
 
     <form role="form"  id="page_form" method="post" action="/rango/category/{{category.slug}}/add_page/">
         <h2 class="form-signin-heading">Add a Page to <a href="/rango/category/{{category.slug}}/"> {{ category.name }}</a></h2>
-                {% csrf_token %}
+        {% csrf_token %}
         <h1>ADD PAGE</h1>
 
         <form id="page_form" method="post" action="{% url 'add_page'  category.slug %}">
@@ -25,9 +25,9 @@
             <br/>
         <button class="btn btn-primary" type="submit" name="submit">Add Page</button>
     </form>
-    {%  else %}
-        <p>This is category does not exist.</p>
-    {%  endif %}
+            {%  else %}
+                <p>This is category does not exist.</p>
+            {%  endif %}
 
-
+{% endif %}
 {% endblock %}

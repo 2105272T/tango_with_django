@@ -1,15 +1,24 @@
 {% extends "base.html" %}
 
+{% load staticfiles %}
+
 {% block body_block %}
 
 <link href="http://getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
 {% if user.username == user_name %}
-<h2>User Profile</h2> <a href="{% url 'add_profile' user.username%}">Edit Profile</a>
+    <h2>User Profile</h2> <a href="{% url 'edit_profile'%}">Edit Profile</a><br/>
+    <a href="{% url 'auth_password_change' %}">Change Password</a><br/><br/>
 {% else %}
-<h2>User Profile</h2>
+    <h2>User Profile</h2>
 {% endif %}
 
-    <br/><br/>
+
     <b>Username: </b><p>{{user_name}}</p>
     <b>Email: </b><p>{{user_email}}</p>
+    <b>Website: </b><p><a href="{{userprofile.website}}">{{userprofile.website}}</a>
+    {% if userprofile.picture %}
+    <p><b>Profile Picture:<b/></p>
+    <img src="{{userprofile.picture.url}}" width="20%" height="20%" alt="Picture of Rango"/>
+    {% endif %}
+
 {% endblock %}

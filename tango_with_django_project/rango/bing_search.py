@@ -6,7 +6,7 @@ import keys
 
 # Add your BING_API_KEY
 
-BING_API_KEY = 'wTjGfxsjAsqOVQLR2lwJcEUGCAH2KeyKk5NePabpDcA'
+BING_API_KEY = ''
 
 def run_query(search_terms):
     # Specify the base

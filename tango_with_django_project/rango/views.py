@@ -67,7 +67,7 @@ def category(request, category_name_slug):
     context_dict['result_list'] = None
     context_dict['query'] = None
     if request.method == 'POST':
-        query = request.POST['query'].strip()
+        query = request.POST.get('query','').strip()
 
         if query:
             # Run our Bing function to get the results list!
@@ -175,14 +175,17 @@ def track_url(request):
 def profile(request, username):
     context_dict = {}
     user = User.objects.get(username=username)
-    profile = UserProfile.objects.get(user=user)
-    context_dict['user_name'] = user.username
-    context_dict['user_email'] = user.email
-    context_dict['userprofile'] = profile
-    return render(request, 'rango/profile.html', context_dict)
+    try:
+        profile = UserProfile.objects.get(user=user)
+        context_dict['user_name'] = user.username
+        context_dict['user_email'] = user.email
+        context_dict['userprofile'] = profile
+        return render(request, 'rango/profile.html', context_dict)
+    except Exception:
+        return redirect('register_profile',)
 
 def search_users(request):
-    user_name = User.objects.all()
+    user_name = UserProfile.objects.all()
     return render(request, 'rango/search_users.html', {'users':user_name})
 
 @login_required

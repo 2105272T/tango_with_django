@@ -7,7 +7,7 @@
 <h2>User Profiles</h2>
 
     {% for u in users %}
-    <li class="list-group-item"><a href="{% url 'profile'  u.username %}">{{ u.username }}</a></li>
+    <li class="list-group-item"><a href="{% url 'profile'  u %}">{{ u }}</a></li>
     {% endfor %}
 
 {% endblock %}

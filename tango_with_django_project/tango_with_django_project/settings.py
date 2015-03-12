@@ -18,11 +18,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = '6_g!mw7yiwkil9xn99@46%i55^8o9gh=hvc+c22ke972ty09(r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['2105272T.pythonanywhere.com']
 
 # Path for template folder
 TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')

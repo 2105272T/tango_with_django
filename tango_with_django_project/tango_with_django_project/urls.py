@@ -18,6 +18,10 @@ urlpatterns = patterns('',
     (r'^accounts/', include('registration.backends.simple.urls')),
 )
 
+handler404 = 'rango.views.index'
+handler500 = 'rango.views.index'
+
+
 # UNDERNEATH your urlpatterns definition, add the following two lines:
 if settings.DEBUG:
     urlpatterns += patterns(

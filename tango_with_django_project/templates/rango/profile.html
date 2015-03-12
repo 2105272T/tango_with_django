@@ -18,7 +18,7 @@
     <b>Website: </b><p><a href="{{userprofile.website}}">{{userprofile.website}}</a>
     {% if userprofile.picture %}
     <p><b>Profile Picture:<b/></p>
-    <img src="{{userprofile.picture.url}}" width="20%" height="20%" alt="Picture of Rango"/>
+    <img src="{{userprofile.picture.url}}" width="20%" height="20%" alt="{{user_name}}'s Profile Picture"/>
     {% endif %}
 
 {% endblock %}
